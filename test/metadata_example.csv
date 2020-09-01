@@ -1,0 +1,35 @@
+sample_id,cell_type
+rep_LVST #1,LVST
+rep_LVST #2,LVST
+rep_LVST #3,LVST
+rep_LVST #4,LVST
+rep_LVS #5,LVS
+rep_LVST #6,LVST
+rep_cMVST #1,cMVST
+rep_cMVST #2,cMVST
+rep_cMVST #3,cMVST
+rep_Caudal Control #1 ,Caudal
+rep_Caudal Control #2,Caudal
+rep_Caudal Control #3,Caudal
+rep_Caudal Control #4,Caudal
+rep_Medial Control #1,Medial
+rep_Medial Control #2,Medial
+rep_Medial Control #3,Medial
+rep_Medial Control #4,Medial
+LVST #1,LVST
+LVST #2,LVST
+LVST #3,LVST
+LVST #4,LVST
+LVS #5,LVS
+LVST #6,LVST
+cMVST #1,cMVST
+cMVST #2,cMVST
+cMVST #3,cMVST
+Caudal Control #1 ,Caudal
+Caudal Control #2,Caudal
+Caudal Control #3,Caudal
+Caudal Control #4,Caudal
+Medial Control #1,Medial
+Medial Control #2,Medial
+Medial Control #3,Medial
+Medial Control #4,Medial
