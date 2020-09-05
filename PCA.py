@@ -25,17 +25,18 @@ parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpForm
     --gene_list cell_specific.csv \n
     Report issues or feature requests to Github 
     (https://github.com/mestill7/graph-generator)''')
-parser.add_argument('--exp_set',nargs='*',type=str, help='Expression matrices, seperated by space. Tab-delimited (.txt) or comma-seperated (.csv) files are accepted')
-parser.add_argument('--exp_list',type=str, help='Text file of expression matrix list, one file per line. Ignored if --exp_set is also specified')
-parser.add_argument('--metadata_set',nargs='*',type=str, help='Metadata files with sample id and cell type, seperated by space. Tab-delimited (.txt) or comma-seperated (.csv) files are accepted')
-parser.add_argument('--metadata_list',type=str, help='Text file of metadata file list, one file per line. Ignored if --metadata_set is also specified')
-parser.add_argument('--gene_list',type=str, help='Cell type specific genes, used for plotting heatmaps. Tab-delimited (.txt) or comma-seperated (.csv), no header. 1st column (required) contains gene identifiers. 2nd column (optional) contains the associated cell type for the gene.')
-parser.add_argument('-S',type=str, help='Name of column used to specify the sample name in the metadata files.')
-parser.add_argument('-T',type=str, help='Name of column used to specify the cell type in the metadata files.')
+optional = parser._action_groups.pop()
+requiredNamed = parser.add_argument_group('Required arguments')
+optional.add_argument('--exp_set',nargs='*',type=str, help='Expression matrices, seperated by space. Tab-delimited (.txt) or comma-seperated (.csv) files are accepted. Sequential files should use the same delimiter.')
+optional.add_argument('--exp_list',type=str, help='Text file of expression matrix list, one file per line. Ignored if --exp_set is also specified')
+optional.add_argument('--metadata_set',nargs='*',type=str, help='Metadata files with sample id and cell type, seperated by space. Tab-delimited (.txt) or comma-seperated (.csv) files are accepted. Sequential files should use the same delimiter.')
+optional.add_argument('--metadata_list',type=str, help='Text file of metadata file list, one file per line. Ignored if --metadata_set is also specified')
+optional.add_argument('--gene_list',type=str, help='Cell type specific genes, used for plotting heatmaps. Tab-delimited (.txt) or comma-seperated (.csv), no header. 1st column (required) contains gene identifiers. 2nd column (optional) contains the associated cell type for the gene.')
+requiredNamed.add_argument('-S',type=str, help='Name of column used to specify the sample name in the metadata files.')
+requiredNamed.add_argument('-T',type=str, help='Name of column used to specify the cell type in the metadata files.')
+parser._action_groups.append(optional)
 args = parser.parse_args()
-# nargs='*',
 
-# print(args)
 arg_dict = vars(args)
 
 if arg_dict['exp_set'] is None and arg_dict['exp_list'] is None:
@@ -46,7 +47,7 @@ if arg_dict['metadata_set'] is None and arg_dict['metadata_list'] is None:
     print(("No metadata information provided. Now exiting..."))
     quit()
 
-print(arg_dict)
+# print(arg_dict)
 #Determine file endings for expression set
 if arg_dict['exp_set'] is None:
     expression_list = open(arg_dict['exp_list']).read().split("\n") # input file describing the count file names
